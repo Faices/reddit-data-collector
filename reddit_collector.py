@@ -24,7 +24,7 @@ def fetch_subreddit_stats(subreddit_name):
     }
     store_subreddit_stats(stats, subreddit_name)
 
-def fetch_and_store_posts(topic, subreddits, sort_orders=['new'], limit=10):
+def fetch_and_store_posts(topic, subreddits, sort_orders=['new'], limit=150):
     """Fetch and store posts from multiple subreddits for a given topic in a topic-specific collection."""
     collection = db[topic]  # Create or select a collection based on the topic name
     for sort_order in sort_orders:
