@@ -73,7 +73,7 @@ To build and run the application using Docker, follow these steps:
 
 2. Run the container:
     ```bash
-    docker run --name reddit-data-collector --env-file .env reddit-data-collector
+    docker run --rm --env-file <your/path/to/>.env reddit-data-collector
 
 
 ### Acknowledgments
