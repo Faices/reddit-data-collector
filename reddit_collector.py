@@ -20,7 +20,8 @@ def fetch_subreddit_stats(subreddit_name):
         "subscribers": subreddit.subscribers,
         "active_users": subreddit.active_user_count,
         "description": subreddit.public_description,
-        "created_utc": datetime.utcfromtimestamp(subreddit.created_utc)
+        "created_utc": datetime.utcfromtimestamp(subreddit.created_utc),
+        "createdAt": datetime.utcnow()  # Record when this data was scraped
     }
     store_subreddit_stats(stats, subreddit_name)
 
@@ -57,7 +58,8 @@ def fetch_and_store_posts(topic, subreddits, sort_orders=['new'], limit=150):
                     "user_flair": author_flair_text,
                     "crossposts": post.num_crossposts,
                     "domain": post.domain,
-                    "is_stickied": post.stickied
+                    "is_stickied": post.stickied,
+                    "createdAt": datetime.utcnow()  # Record when this data was scraped
                 }
                 collection.insert_one(post_data)
             print(f"Finished fetching and storing {sort_order} posts from /r/{subreddit_name} for {topic}.")
